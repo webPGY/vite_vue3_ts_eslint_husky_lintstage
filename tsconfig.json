@@ -1,0 +1,50 @@
+{
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "esnext",
+		"strict": true,
+		"jsx": "preserve",
+		"moduleResolution": "node",
+		"experimentalDecorators": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"useDefineForClassFields": true,
+		"sourceMap": true,
+		"baseUrl": ".",
+    "plugins": [
+      //配置 unplugin-auto-import 和 unplugin-vue-components
+      {
+        "name": "unplugin-auto-import",
+        "options": {
+          "imports": ["element-plus", "vue", "vue-router"],
+          "dts": "auto-imports.d.ts"
+        }
+      },
+      {
+        "name": "unplugin-vue-components",
+        "options": {
+          "dts": "components.d.ts",
+          "include": ["**/*.vue", "**/*.md"],
+          "resolvers": ["element-plus", "vue", "vue-router"]
+        }
+      }
+    ],
+    // 指定要包含的类型声明文件
+    "types": [
+      "element-plus/global",
+      "vite/client",
+      "vue",
+      "vue-router",
+      "@types/node",
+    ],
+		"paths": {
+			"@/*": ["src/*"]
+		},
+		"lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+	},
+	"include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "tests/**/*.tsx"],
+	"exclude": ["node_modules", "dist", "**/*.js"],
+	"references": [{ "path": "./tsconfig.node.json" }]
+}

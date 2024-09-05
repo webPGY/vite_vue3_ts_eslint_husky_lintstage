@@ -1,0 +1,18 @@
+{
+  // "files.eol": "\n",
+  // "files.associations": {
+  //   "*.env.*": "dotenv"
+  // },
+
+  // "editor.formatOnSave": false,
+  // "[html][css][less][scss][sass][yaml][yml][jsonc][json]": {
+  //   "editor.formatOnSave": true,
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // },
+  // "editor.codeActionsOnSave": {
+  //   "source.fixAll.eslint": "explicit"
+  // },
+  // "eslint.validate": ["javascript", "typescript", "javascriptreact", "typescriptreact", "vue"],
+  // "typescript.tsdk": "node_modules/typescript/lib",
+  // "typescript.preferences.autoImportFileExcludePatterns": ["vue-router$"]
+}
