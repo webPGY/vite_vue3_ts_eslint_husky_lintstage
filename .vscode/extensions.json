@@ -1,3 +1,11 @@
 {
-  "recommendations": ["Vue.volar"]
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "Vue.volar",
+    "EditorConfig.EditorConfig",
+    "eamodio.gitlens",
+    "VisualStudioExptTeam.vscodeintellicode",
+    "mikestead.dotenv"
+  ]
 }

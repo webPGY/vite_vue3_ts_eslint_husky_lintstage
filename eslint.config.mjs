@@ -37,7 +37,28 @@ export default [
   ...compat.extends('.eslint-global-variables.json'),
   {
     files: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.vue', 'tests/**/*.ts', 'tests/**/*.tsx'],
-    ignores: ['**/temp.js', 'config/*', 'public/*', 'dist/*', '.vscode', 'eslint.config.mjs'],
+    ignores: [
+      '**/temp.js',
+      'config/*',
+      'public/*',
+      'assets/*',
+      'dist/*',
+      '.vscode',
+      'vite.config.ts',
+      '.cz-config.js',
+      'auto-import.d.ts',
+      'components.d.ts',
+      '*.local',
+      '.DS_Store',
+      '.idea',
+      'pnpm-debug.log*',
+      'yarn-debug.log*',
+      'npm-debug.log*',
+      '*.log',
+      'logs',
+      'tsconfig.node.tsbuildinfo',
+      'eslint.config.{mjs,js,cjs}'
+    ],
     // parser: 'vue-eslint-parser',
     languageOptions: {
       parserOptions: {

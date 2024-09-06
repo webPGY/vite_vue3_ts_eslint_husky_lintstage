@@ -24,16 +24,18 @@ module.exports = {
   // 新增
   root: true,
   // 对某些文件进行单独配置（这里针对 TypeScript 文件）
-  overrides: [{
-    // files: ['*.ts', '*.tsx', '*.vue'],
-    files: ['.eslintrc.{js,cjs}'],
-    parserOptions: {
-      sourceType: 'script'
-    },
-    rules: {
-      'no-undef': 'off', // 在 TypeScript 中没有必要使用 no-undef 规则
-    },
-  }, ],
+  overrides: [
+    {
+      // files: ['*.ts', '*.tsx', '*.vue'],
+      files: ['.eslintrc.{js,cjs}'],
+      parserOptions: {
+        sourceType: 'script'
+      },
+      rules: {
+        'no-undef': 'off' // 在 TypeScript 中没有必要使用 no-undef 规则
+      }
+    }
+  ],
   // 自定义规则
   rules: {
     // http://eslint.cn/docs/rules/
@@ -136,6 +138,6 @@ module.exports = {
     // 禁用 console 输出
     // 'no-console': 'error',
     // 重复声明变量视为错误
-    'no-redeclare': 'error',
-  },
+    'no-redeclare': 'error'
+  }
 }
