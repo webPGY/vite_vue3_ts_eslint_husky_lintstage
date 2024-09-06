@@ -21,10 +21,14 @@
     "eslint-config-standard": "^17.1.0",
     "husky": "^9.1.5",
     "lint-staged": "^15.2.10",
+    "pinia": "^2.2.2",
     "prettier": "^3.3.3",
+    "sass": "^1.78.0",
+    "sass-loader": "^16.0.1",
     "terser": "^5.31.6",
     "vite-plugin-eslint": "^1.8.1",
     "vue": "^3.4.37",
+    "vue-i18n": "^9.14.0",
     "vue-router": "^4.4.3"
   },
   "engines": {

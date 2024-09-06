@@ -42,7 +42,7 @@ export default [
       'config/*',
       'public/*',
       'assets/*',
-      'dist/*',
+      'dist',
       '.vscode',
       'vite.config.ts',
       '.cz-config.js',
@@ -68,10 +68,10 @@ export default [
     rules: {
       'vue/multi-word-component-names': 'off',
       '@typescript-eslint/no-explicit-any': ['off'],
-      // 'no-console': 'off', // 生产环境中警告 console 使用，开发环境中关闭规则
-      // 'no-debugger': 'off', // 生产环境中警告 debugger 使用，开发环境中关闭规则
-      'no-console': env.NODE_ENV === 'production' ? 'warn' : 'off', // 生产环境中警告 console 使用，开发环境中关闭规则
-      'no-debugger': env.NODE_ENV === 'production' ? 'warn' : 'off', // 生产环境中警告 debugger 使用，开发环境中关闭规则
+      'no-console': 'off', // 生产环境中警告 console 使用，开发环境中关闭规则
+      'no-debugger': 'off', // 生产环境中警告 debugger 使用，开发环境中关闭规则
+      // 'no-console': env.NODE_ENV === 'production' ? 'warn' : 'off', // 生产环境中警告 console 使用，开发环境中关闭规则
+      // 'no-debugger': env.NODE_ENV === 'production' ? 'warn' : 'off', // 生产环境中警告 debugger 使用，开发环境中关闭规则
       // indent: ['error', 2] // 缩进使用 2 个空格 而不是 4 个  error
       // 'linebreak-style': ['warn', 'windows'], // 使用 Unix 风格的换行符
       // quotes: ['warn', 'single'], // 使用单引号
