@@ -1,5 +1,6 @@
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 import eslintPlugin from 'vite-plugin-eslint'
 import { fileURLToPath, URL } from 'node:url'
 // 导入自动导入插件
@@ -7,6 +8,8 @@ import AutoImport from 'unplugin-auto-import/vite'
 // 导入自动注册组件的插件
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import postCssPxToRem from 'postcss-pxtorem'
+import autoprefixer from 'autoprefixer'
 
 // https://vitejs.dev/config/
 export default defineConfig(async ({ mode }) => {
@@ -16,6 +19,7 @@ export default defineConfig(async ({ mode }) => {
   return {
     plugins: [
       vue(),
+      vueJsx(),
       // eslint插件配置
       eslintPlugin({
         include: ['src/**/*.js', 'src/**/*.vue', 'src/**/*.ts'], // 指定需要检查的文件
@@ -63,6 +67,27 @@ export default defineConfig(async ({ mode }) => {
       }
     },
     css: {
+      postcss: {
+        plugins: [
+          postCssPxToRem({
+            rootValue: 16, // 设计稿尺寸 1rem大小
+            propList: ['*'], // 需要转换的属性，这里选择全部都进行转换
+            selectorBlackList: ['.norem'] // 过滤掉.norem-开头的class，不进行rem转换
+          }),
+          autoprefixer({
+            // 自动添加前缀
+            overrideBrowserslist: [
+              'Android 4.1',
+              'iOS 7.1',
+              'Chrome > 31',
+              'ff > 31',
+              'ie >= 8'
+              //'last 2 versions', // 所有主流浏览器最近2个版本
+            ],
+            grid: true
+          })
+        ]
+      },
       preprocessorOptions: {
         scss: {
           additionalData: `
