@@ -64,6 +64,10 @@ export default defineConfig(async ({ mode }) => {
           target: 'http://localhost:6666',
           rewrite: (path: string) => path.replace(/^\/mock/, ''),
           changeOrigin: true
+        },
+        '/kuailu': {
+          target: process.env.VITE_APP_BASE_URL,
+          changeOrigin: true
         }
       }
     },
@@ -92,6 +96,7 @@ export default defineConfig(async ({ mode }) => {
       preprocessorOptions: {
         scss: {
           additionalData: `
+            @use "@/assets/styles/element-plus.scss" as *;
             @use "@/assets/styles/varible.scss" as *;
           `
         }

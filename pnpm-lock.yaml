@@ -29,6 +29,9 @@ dependencies:
   eslint-config-standard:
     specifier: ^17.1.0
     version: 17.1.0(eslint-plugin-import@2.30.0)(eslint-plugin-n@16.6.2)(eslint-plugin-promise@6.6.0)(eslint@9.9.1)
+  fingerprintjs2:
+    specifier: ^2.1.4
+    version: 2.1.4
   husky:
     specifier: ^9.1.5
     version: 9.1.5
@@ -73,6 +76,9 @@ devDependencies:
   '@eslint/js':
     specifier: ^9.9.1
     version: 9.9.1
+  '@types/fingerprintjs2':
+    specifier: ^2.0.0
+    version: 2.0.0
   '@types/node':
     specifier: ^20.14.15
     version: 20.16.4
@@ -1194,6 +1200,10 @@ packages:
 
   /@types/estree@1.0.5:
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
+
+  /@types/fingerprintjs2@2.0.0:
+    resolution: {integrity: sha512-isSTwNnW5I6zGZnpkinmVcV9pJqr7cLELns+tXDYzskIOAb2J+iCQ0mQJ9bRjHJhZfdlTFXZoCYK9ZgT3oMWXQ==}
+    dev: true
 
   /@types/fs-extra@9.0.13:
     resolution: {integrity: sha512-nEnwB++1u5lVDM2UI4c1+5R+FYaKfaAzS4OococimjVm3nQw3TuzH5UNsocrcTBbhnerblyHj4A49qXbIiZdpA==}
@@ -3608,6 +3618,11 @@ packages:
       micromatch: 4.0.8
       resolve-dir: 1.0.1
     dev: true
+
+  /fingerprintjs2@2.1.4:
+    resolution: {integrity: sha512-veP2yVsnYvjDVkzZMyIEwpqCAQfsBLH+U4PK5MlFAnLjZrttbdRqEArE1fPcnJFz5oS5CrdONbsV7J6FGpIJEQ==}
+    deprecated: Package has been renamed to @fingerprintjs/fingerprintjs. Install @fingerprintjs/fingerprintjs to get updates.
+    dev: false
 
   /flat-cache@4.0.1:
     resolution: {integrity: sha512-f7ccFPK3SXFHpx15UIGyRJ/FJQctuKZ0zVuN3frBo4HnK3cay9VEW0R6yPYFHC0AgqhukPzKjq22t5DmAyqGyw==}

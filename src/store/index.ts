@@ -3,7 +3,8 @@ export * from './modules'
 
 export const main = defineStore('main', {
   state: () => ({
-    counter: 12
+    counter: 12,
+    seid: ''
   }),
   actions: {
     increment() {

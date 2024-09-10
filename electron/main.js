@@ -10,10 +10,12 @@ protocol.registerSchemesAsPrivileged([
   { scheme: 'app', privileges: { secure: true, standard: true } }
 ])
 
-const createWindow = () => {
+const createWindow = async () => {
   const window = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1456,
+    height: 800,
+    minHeight: 800,
+    minWidth: 1456,
     fullscreenable: true,
     fullscreen: false,
     center: true, //窗口是否在屏幕居中. 默认值为 false
@@ -27,11 +29,12 @@ const createWindow = () => {
     }
   })
   window.setMenu(null)
+
   if (app.isPackaged) {
     window.loadURL(`file://${path.join(__dirname, '../dist/index.html')}`)
   } else {
     window.loadURL('http://localhost:8888/')
-    //window.loadURL('http://localhost:5173/')
+    // window.loadURL('http://localhost:5173/')
     window.webContents.openDevTools()
   }
   //通过CommandOrControl+Shift+i打开控制台

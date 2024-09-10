@@ -1,22 +1,27 @@
-import axios from './axios'
+import request from './request'
 
-const login = (data) =>
+const login = (userNo: string, password: string, boDeviceId: string) =>
   new Promise((resolve, reject) => {
-    axios
-      .get('/usermanager/login', { params: data })
-      .then((res) => {
-        resolve(res)
-      })
-      .catch((error) => {
-        reject(error)
-      })
-  })
-
-const logout = (data) =>
-  new Promise((resolve, reject) => {
-    axios
-      .get('/usermanager/logout', { params: data })
-      .then((res) => {
+    request({
+      url: '/kuailu/j?appid=com.kuailu.base.apps.security&method=clientLogin&seid=',
+      method: 'post',
+      headers: {
+        boTerm: 'PC',
+        boPlat: 'pc',
+        boEquipmentType: 'PC',
+        boDeviceId,
+        boEquipmentModel: navigator?.userAgent?.match(/[(]([^;]*)[;]/g)?.[0]?.replace(/[(;]/g, ''),
+        boVer: '2.8.7'
+      },
+      data: {
+        ignoreSlider: true,
+        movePosX: '',
+        userNo,
+        password,
+        version: '1.0'
+      }
+    })
+      ?.then((res) => {
         resolve(res)
       })
       .catch((error) => {
@@ -25,6 +30,5 @@ const logout = (data) =>
   })
 
 export default {
-  login,
-  logout
+  login
 }

@@ -79,6 +79,7 @@ export default [
       // quotes: ['warn', 'single'], // 使用单引号
       // semi: ['error', 'always'], // 语句末尾不加分号
       // 'no-unused-vars': 'error', // 关闭未使用变量警告
+      '@typescript-eslint/no-unsafe-function-type': 'off',
       '@typescript-eslint/no-unused-vars': 'off' // 关闭未使用变量警告
       // 'vue/multi-word-component-names': 'off', //Vue 组件的名称应该是多词的，以提高可读性和维护性
     }
