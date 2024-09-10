@@ -17,6 +17,7 @@ export default defineConfig(async ({ mode }) => {
   console.log(`\n------当前环境: ${JSON.stringify(process.env.NODE_ENV)}`)
 
   return {
+    base: './',
     plugins: [
       vue(),
       vueJsx(),

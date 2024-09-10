@@ -2,11 +2,19 @@
   "name": "vite-demo",
   "private": true,
   "version": "0.0.0",
+  "main": "electron/main.js",
+  "author": {
+    "name": "pengff",
+    "email": "pengff@pengff.com.cn"
+  },
+  "description": "pengff",
   "scripts": {
     "prepare": "npx husky install",
     "clear": "npx rimraf install && rimraf ./node_modules",
     "commit": "git add . && git-cz",
     "dev": "vite",
+    "electron": "vite | electron .",
+    "electron:build": "vite build && electron-builder",
     "lint": "eslint . -c .js,.mjs,.cjs,.ts,.vue --fix --ignore-pattern .gitignore",
     "lint:fix": "eslint . --fix",
     "lint:lint-staged": "lint-staged",
@@ -16,9 +24,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@electron-toolkit/preload": "^3.0.1",
+    "@electron-toolkit/utils": "^3.0.0",
     "@eslint/eslintrc": "^3.1.0",
     "@vitejs/plugin-vue-jsx": "^4.0.1",
     "autoprefixer": "^10.4.20",
+    "axios": "^1.7.7",
     "element-plus": "^2.8.1",
     "eslint-config-standard": "^17.1.0",
     "husky": "^9.1.5",
@@ -47,6 +58,8 @@
     "commitizen": "^4.3.0",
     "commitlint-config-cz": "^0.13.3",
     "cz-customizable": "^7.2.1",
+    "electron": "^32.0.2",
+    "electron-builder": "^23.6.0",
     "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
@@ -61,17 +74,72 @@
     "vite": "^5.4.1",
     "vue-tsc": "^2.0.29"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-customizable"
+  "build": {
+    "appId": "pengff.first.app",
+    "productName": "ElectronApp",
+    "copyright": "Copyright © 2024 pengff",
+    "directories": {
+      "output": "dist_electron"
     },
-    "cz-customizable": {
-      "config": ".cz-config.cjs"
+    "win": {
+      "icon": "./build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
     },
-    "conventional-changelog": {
-      "preset": "cz",
-      "lint": "conventional-changelog-lint-config-cz"
+    "dmg": {
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
+    },
+    "linux": {
+      "icon": "./build/icon.ico",
+      "target": "AppImage"
+    },
+    "mac": {
+      "icon": "./build/icon.icns"
+    },
+    "files": [
+      "./dist",
+      "./electron",
+      "!**/node_modules/**"
+    ],
+    "asar": false,
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "./build/icon.ico",
+      "uninstallerIcon": "./build/icon.ico",
+      "installerHeaderIcon": "./build/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
     }
+  },
+  "commitizen": {
+    "path": "./node_modules/cz-customizable"
+  },
+  "cz-customizable": {
+    "config": ".cz-config.cjs"
+  },
+  "conventional-changelog": {
+    "preset": "cz",
+    "lint": "conventional-changelog-lint-config-cz"
   },
   "husky": {
     "hooks": {

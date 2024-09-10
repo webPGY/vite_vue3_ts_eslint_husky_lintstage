@@ -17,3 +17,37 @@ Learn more about the recommended Project Setup and IDE Support in the [Vue Docs 
 直接使用一下命令：
 
 eslint .
+
+
+### 参考文档
+
+https://cn-evite.netlify.app/config/
+
+http://electronjs.p2hp.com/docs/latest/tutorial/process-model
+
+### 关于打包
+
+```bash
+
+第一次打包时会去 github 下载资源文件，被墙的原因容易下载失败，需要自己手动下载，放入缓存目录
+
+winCodeSign下载地址
+https://registry.npmmirror.com/binary.html?path=electron-builder-binaries/winCodeSign-2.6.0/
+下载后解压手动放入 C:\Users\xxx\AppData\Local\electron-builder\Cache\winCodeSign
+
+nsis下载地址
+https://registry.npmmirror.com/binary.html?path=electron-builder-binaries/nsis-3.0.4.1/
+下载后解压手动放入 C:\Users\xxx\AppData\Local\electron-builder\Cache\nsis
+
+nsis-resources下载地址
+https://registry.npmmirror.com/binary.html?path=electron-builder-binaries/nsis-resources-3.4.1/
+
+下载后解压手动放入 C:\Users\xxx\AppData\Local\electron-builder\Cache\nsis
+
+其他版本可查看
+https://registry.npmmirror.com/binary.html?path=electron-builder-binaries/
+
+
+打包后要把 /kuailuMeeting 整个目录拷贝到 /dist/win-unpacked/resources目录下，这是Qt的相关文件
+
+```

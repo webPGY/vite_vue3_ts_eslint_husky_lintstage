@@ -43,6 +43,8 @@ export default [
       'public/*',
       'assets/*',
       'dist',
+      'dist_electron',
+      'electron/*',
       '.vscode',
       'vite.config.ts',
       '.cz-config.js',
