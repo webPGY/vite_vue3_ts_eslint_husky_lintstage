@@ -91,6 +91,7 @@ export default defineConfig(async ({ mode }) => {
       preprocessorOptions: {
         scss: {
           additionalData: `
+            @use "@/assets/styles/element-plus.scss" as *;
             @use "@/assets/styles/varible.scss" as *;
           `
         }
