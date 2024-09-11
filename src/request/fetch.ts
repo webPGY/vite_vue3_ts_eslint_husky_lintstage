@@ -16,9 +16,11 @@ export const ContentType = {
   ARRAYBUFFER: 'application/octet-stream'
 }
 
+const _baseUrl = 'https://koa.quickegret.com'
+
 export class API {
   #init = {
-    base: '',
+    base: _baseUrl,
     port: '',
     timeout: 600000,
     headers: { 'Content-Type': '' }

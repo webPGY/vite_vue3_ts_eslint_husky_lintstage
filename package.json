@@ -139,16 +139,12 @@
   "cz-customizable": {
     "config": ".cz-config.cjs"
   },
-  "conventional-changelog": {
-    "preset": "cz",
-    "lint": "conventional-changelog-lint-config-cz"
-  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*.{js,mjs,cjs,ts,vue}": "eslint . --fix"
+    "*.{js,mjs,cjs,ts,vue}": "eslint . src/ --fix"
   }
 }

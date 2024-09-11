@@ -3,7 +3,7 @@ import request from './request'
 const login = (userNo: string, password: string, boDeviceId: string) =>
   new Promise((resolve, reject) => {
     request({
-      url: '/kuailu/j?appid=com.kuailu.base.apps.security&method=clientLogin&seid=',
+      url: 'https://koa.quickegret.com/kuailu/j?appid=com.kuailu.base.apps.security&method=clientLogin&seid=',
       method: 'post',
       headers: {
         boTerm: 'PC',
