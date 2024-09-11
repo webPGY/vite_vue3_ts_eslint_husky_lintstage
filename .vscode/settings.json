@@ -3,7 +3,12 @@
   // "files.associations": {
   //   "*.env.*": "dotenv"
   // },
-
+  // "editor.insertSpaces": true,
+  // "editor.tabSize": 4,
+  // "editor.autoIndent": "advanced",
+  // "editor.detectIndentation": false,
+  // "editor.trimAutoWhitespace": true,
+  // "files.eol": "\n",
   "editor.formatOnSave": false,
   "[html][css][less][scss][sass][yaml][yml][jsonc][json]": {
     "editor.formatOnSave": true,
