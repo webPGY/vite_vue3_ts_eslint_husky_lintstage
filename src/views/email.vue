@@ -13,11 +13,22 @@
   const useMain = main()
   const { seid } = storeToRefs(main())
   const href = computed(() => {
-    return `https://koa.quickegret.com/web/email/#/home?sessionId=${seid.value}`
+    return import.meta.env.VITE_APP_NODE_ENV === 'development'
+      ? `http://192.168.204.142:5173/#/home?sessionId=${seid.value}`
+      : `https://koa.quickegret.com/web/email/#/home?sessionId=${seid.value}`
   })
   const back = () => {
     router.replace('/')
   }
+  window.addEventListener('message', (event: MessageEvent) => {
+    if (event?.data?.type === 'init') {
+      console.log('init------email', event.data?.data)
+    }
+    if (event?.data?.type === 'newMail') {
+      console.log('new------email', event.data?.data)
+      window?.util?.startFlash('Welcome Electron')
+    }
+  })
 </script>
 <style lang="scss" scoped>
   .email {

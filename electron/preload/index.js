@@ -1,11 +1,15 @@
 // eslint-disable-next-line @typescript-eslint/no-require-imports
-const { contextBridge, ipcRenderer } = require('electron')
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const { electronAPI } = require('@electron-toolkit/preload')
+const { contextBridge, ipcRenderer, ipcMain } = require('electron')
+// const { electronAPI } = require('@electron-toolkit/preload')
 
 // Custom Util APIs for renderer
 const util = {
   // 暴露给浏览器的工具方法，向node主进程发起通信
+  ipc: ipcMain,
+  showNotification: (message) => ipcRenderer.invoke('showNotification', message),
+  startFlash: (message) => ipcRenderer.invoke('startFlash', message),
+  endFlash: (message) => ipcRenderer.invoke('endFlash', message),
+
   openWindow: ({ pageName, parentName, params, options }) =>
     ipcRenderer.invoke('openWindow', { pageName, parentName, params, options }),
   closeWindow: (pageName, params) => ipcRenderer.invoke('closeWindow', pageName, params),
@@ -15,8 +19,6 @@ const util = {
   noticeWindow: (pageName) => ipcRenderer.invoke('noticeWindow', pageName),
   fetchData: (urlMethod, data, ...args) =>
     ipcRenderer.invoke('fetchData', urlMethod, data, ...args),
-  joinRoom: (params) => ipcRenderer.invoke('joinRoom', params),
-  getIsJoinRoom: () => ipcRenderer.invoke('getIsJoinRoom'),
   noticeLogin: (params) => ipcRenderer.invoke('noticeLogin', params),
   noticeLogout: () => ipcRenderer.invoke('noticeLogout'),
   getDeviceId: () => ipcRenderer.invoke('getDeviceId')
@@ -36,7 +38,7 @@ const listener = {
 // just add to the DOM global.
 if (process.contextIsolated) {
   try {
-    contextBridge.exposeInMainWorld('electron', electronAPI)
+    // contextBridge.exposeInMainWorld('electron', electronAPI)
     contextBridge.exposeInMainWorld('util', util)
     contextBridge.exposeInMainWorld('listener', listener)
     // 除函数之外，我们也可以暴露变量
@@ -44,7 +46,7 @@ if (process.contextIsolated) {
     console.error(error)
   }
 } else {
-  window.electron = electronAPI
+  // window.electron = electronAPI
   window.util = util
   window.listener = listener
 }

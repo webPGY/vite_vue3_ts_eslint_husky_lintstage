@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="login-wrap">
-      <p>Welcome Electron</p>
+      <p @click="sendNotification">Welcome Electron</p>
       <el-input v-model="userName" placeholder="请输入用户名" />
       <el-input v-model="userPassword" type="password" placeholder="请输入密码" />
       <el-button type="primary" :disabled="disabled" @click="login">登录闪邮</el-button>
@@ -31,6 +31,18 @@
   //   useMain.increment()
   // }
 
+  const sendNotification = () => {
+    window?.util?.showNotification('Welcome Electron')
+  }
+
+  const startFlash = () => {
+    window?.util?.startFlash('Welcome Electron')
+  }
+
+  const endFlash = () => {
+    window?.util?.endFlash('Welcome Electron')
+  }
+
   const login = async () => {
     const bodeviceId = await GetBoDeviceId()
     try {
@@ -46,6 +58,12 @@
       showTips('账号或密码错误', 'fail')
     }
   }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+      endFlash()
+    }
+  })
 </script>
 <style lang="scss" scoped>
   .home {
