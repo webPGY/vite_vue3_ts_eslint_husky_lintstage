@@ -47,7 +47,4 @@ https://registry.npmmirror.com/binary.html?path=electron-builder-binaries/nsis-r
 其他版本可查看
 https://registry.npmmirror.com/binary.html?path=electron-builder-binaries/
 
-
-打包后要把 /kuailuMeeting 整个目录拷贝到 /dist/win-unpacked/resources目录下，这是Qt的相关文件
-
 ```
