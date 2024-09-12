@@ -13,6 +13,7 @@
     "clear": "npx rimraf install && rimraf ./node_modules",
     "commit": "git add . && git-cz",
     "dev": "vite",
+    "electron:icon": "electron-icon-maker --input=./src/assets/icon.png --output=./build",
     "electron": "vite | electron .",
     "electron:build": "vite build && electron-builder",
     "lint": "eslint . -c .js,.mjs,.cjs,.ts,.vue --fix --ignore-pattern .gitignore",
@@ -31,6 +32,7 @@
     "@vitejs/plugin-vue-jsx": "^4.0.1",
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.7",
+    "electron-icon-maker": "^0.0.5",
     "element-plus": "^2.8.1",
     "eslint-config-standard": "^17.1.0",
     "fingerprintjs2": "^2.1.4",
@@ -85,7 +87,7 @@
       "output": "dist_electron"
     },
     "win": {
-      "icon": "./build/icon.ico",
+      "icon": "./build/icons/win/icon.ico",
       "target": [
         {
           "target": "nsis",
@@ -111,11 +113,11 @@
       ]
     },
     "linux": {
-      "icon": "./build/icon.ico",
+      "icon": "./build/icons/win/icon.ico",
       "target": "AppImage"
     },
     "mac": {
-      "icon": "./build/icon.icns"
+      "icon": "./build/icons/mac/icon.icns"
     },
     "files": [
       "./dist",
@@ -127,9 +129,9 @@
       "oneClick": false,
       "allowElevation": true,
       "allowToChangeInstallationDirectory": true,
-      "installerIcon": "./build/icon.ico",
-      "uninstallerIcon": "./build/icon.ico",
-      "installerHeaderIcon": "./build/icon.ico",
+      "installerIcon": "./build/icons/win/icon.ico",
+      "uninstallerIcon": "./build/icons/win/icon.ico",
+      "installerHeaderIcon": "./build/icons/win/icon.ico",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true
     }
