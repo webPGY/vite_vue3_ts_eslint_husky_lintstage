@@ -64,7 +64,12 @@ const createWindow = async () => {
 }
 
 function showNotification(message) {
-  const notification = new Notification({ title: 'Notification', body: message })
+  app.setAppUserModelId('Kuailu Email')
+  const notification = new Notification({
+    title: 'Notification',
+    body: message,
+    icon: path.join(__dirname, './icon.png')
+  })
   notification.show()
 }
 
@@ -106,24 +111,28 @@ app.on('win-all-closed', () => {
   if (process.platform !== 'darwin') app.quit()
 })
 
-// 监听渲染进程发送的事件
-ipcMain.on('showNotification', (event, message) => {
-  const notification = new Notification({ title: 'Notification', body: message })
-  notification.show()
+ipcMain.on('app-ready', () => {
+  app.setAppUserModelId('Electron App')
 })
 
-ipcMain.on('startFlash', (event, message) => {
-  clearInterval(timer)
-  // 设置一个定时器来触发闪烁效果
-  timer = setInterval(() => {
-    win.flashFrame(true)
-    setTimeout(() => {
-      win.flashFrame(false)
-    }, 1000) // 闪烁1秒钟
-  }, 3000) // 每3秒钟闪烁一次
-})
+// // 监听渲染进程发送的事件
+// ipcMain.on('showNotification', (event, message, icon) => {
+//   const notification = new Notification({ title: 'Notification', body: message, icon })
+//   notification.show()
+// })
 
-ipcMain.on('endFlash', (event, message) => {
-  clearInterval(timer)
-  win.flashFrame(false)
-})
+// ipcMain.on('startFlash', (event, message) => {
+//   clearInterval(timer)
+//   // 设置一个定时器来触发闪烁效果
+//   timer = setInterval(() => {
+//     win.flashFrame(true)
+//     setTimeout(() => {
+//       win.flashFrame(false)
+//     }, 1000) // 闪烁1秒钟
+//   }, 3000) // 每3秒钟闪烁一次
+// })
+
+// ipcMain.on('endFlash', (event, message) => {
+//   clearInterval(timer)
+//   win.flashFrame(false)
+// })
