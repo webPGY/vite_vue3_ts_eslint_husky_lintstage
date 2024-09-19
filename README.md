@@ -48,3 +48,28 @@ https://registry.npmmirror.com/binary.html?path=electron-builder-binaries/nsis-r
 https://registry.npmmirror.com/binary.html?path=electron-builder-binaries/
 
 ```
+
+```bash
+### 踩坑
+package.json不配置type=module, js不支持import? 配置之后报模块导入错误
+要同时支持commonjs和es6语法，只需在pakage.json配置type=module.
+配置type=module， vite编译报错
+不配置type=module, 需在tsconfig.json中配置"moduleResolution": "node", vite编译通过
+electron报ReferenceError: module is not defined in ES module scope
+
+最终原因是由于
+packages.json 中的属性 type 设置为 module。所有 *.js 文件现在都被解释为 ESM；
+但 Vite 有说明， postcss 配置文件 暂不支持 ESM 语法，所以冲突了；
+改为 .cjs 后缀，继续以 CommonJS 方式加载此文件即可；
+想进一步了解 Vite 对 CommonJS 的 说明在此；
+————————————————
+
+解决方案：
+package.json加上type=module
+prettier.config.js改为prettier.config.cjs
+
+electron-store 版本过高不支持commonjs,解决办法降级
+
+原文链接：https://blog.csdn.net/sinat_31213021/article/details/136513249
+
+```

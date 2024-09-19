@@ -47,7 +47,7 @@ export default [
       'dist_electron/*',
       'electron/*',
       '.vscode',
-      'vite.config.ts',
+      'vite.config.{mjs,js,ts}',
       '.cz-config.js',
       'auto-import.d.ts',
       'components.d.ts',

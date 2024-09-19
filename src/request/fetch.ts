@@ -1,4 +1,5 @@
 import { showTips } from '@/utils/common'
+import { useElectron } from '@/hooks/useElectron'
 
 export type RequestData = {
   url: RequestInfo | URL | string
@@ -16,11 +17,11 @@ export const ContentType = {
   ARRAYBUFFER: 'application/octet-stream'
 }
 
-const _baseUrl = 'https://koa.quickegret.com'
+const baseUrl = !useElectron().isElectron ? '' : 'https://koa.quickegret.com'
 
 export class API {
   #init = {
-    base: _baseUrl,
+    base: baseUrl,
     port: '',
     timeout: 600000,
     headers: { 'Content-Type': '' }

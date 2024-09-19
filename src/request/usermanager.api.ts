@@ -1,9 +1,10 @@
 import request from './request'
-
+const baseUrl =
+  import.meta.env.VITE_APP_NODE_ENV === 'development' ? '/' : 'https://koa.quickegret.com/'
 const login = (userNo: string, password: string, boDeviceId: string) =>
   new Promise((resolve, reject) => {
     request({
-      url: 'https://koa.quickegret.com/kuailu/j?appid=com.kuailu.base.apps.security&method=clientLogin&seid=',
+      url: `${baseUrl}kuailu/j?appid=com.kuailu.base.apps.security&method=clientLogin&seid=`,
       method: 'post',
       headers: {
         boTerm: 'PC',
