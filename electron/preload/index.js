@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-require-imports
 const { contextBridge, ipcRenderer, ipcMain } = require('electron')
-const Store = require('electron-store')
-const store = new Store()
+// const Store = require('electron-store')
+// const store = new Store()
 // const { electronAPI } = require('@electron-toolkit/preload')
 
 // Custom Util APIs for renderer
@@ -11,9 +11,9 @@ const util = {
   showNotification: (message) => ipcRenderer.invoke('showNotification', message),
   startFlash: (message) => ipcRenderer.invoke('startFlash', message),
   endFlash: (message) => ipcRenderer.invoke('endFlash', message),
-  setStoreValue: (key, value) => store.set(key, value),
-  getStoreValue: (key) => store.get(key),
-  deleteStore: (key) => store.delete(key),
+  // setStoreValue: (key, value) => store.set(key, value),
+  // getStoreValue: (key) => store.get(key),
+  // deleteStore: (key) => store.delete(key),
   openWindow: ({ pageName, parentName, params, options }) =>
     ipcRenderer.invoke('openWindow', { pageName, parentName, params, options }),
   closeWindow: (pageName, params) => ipcRenderer.invoke('closeWindow', pageName, params),
