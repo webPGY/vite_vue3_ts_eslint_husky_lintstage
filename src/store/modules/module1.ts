@@ -2,7 +2,7 @@ import { acceptHMRUpdate, defineStore } from 'pinia'
 
 export const moudule1Store = defineStore('moudule1Store', {
   state: () => ({
-    primary: 'module1 commonStore'
+    primary: 'module1 commonStore change'
   }),
   actions: {}
 })
