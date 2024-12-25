@@ -1,6 +1,5 @@
 import request from './request'
-const baseUrl =
-  import.meta.env.VITE_APP_NODE_ENV === 'development' ? '/' : 'https://koa.quickegret.com/'
+const baseUrl = 'https://oi.bwoil.com/'
 const login = (userNo: string, password: string, boDeviceId: string) =>
   new Promise((resolve, reject) => {
     request({

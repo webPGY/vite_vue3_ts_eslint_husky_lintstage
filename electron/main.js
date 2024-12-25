@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { app, protocol, BrowserWindow, globalShortcut, ipcMain, Notification } = require('electron')
 // 需在当前文件内开头引入 Node.js 的 'path' 模块
 // eslint-disable-next-line @typescript-eslint/no-require-imports
@@ -73,7 +74,7 @@ function showNotification(message) {
   notification.show()
 }
 
-function startFlash(message) {
+function startFlash() {
   clearInterval(timer)
   // 设置一个定时器来触发闪烁效果
   timer = setInterval(() => {
@@ -84,7 +85,7 @@ function startFlash(message) {
   }, 3000) // 每3秒钟闪烁一次
 }
 
-function endFlash(message) {
+function endFlash() {
   clearInterval(timer)
   win.flashFrame(false)
 }

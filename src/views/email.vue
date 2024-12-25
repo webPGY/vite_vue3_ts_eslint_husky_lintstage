@@ -13,9 +13,7 @@
   const useMain = main()
   const { seid } = storeToRefs(main())
   const href = computed(() => {
-    return import.meta.env.VITE_APP_NODE_ENV === 'development'
-      ? `http://192.168.204.142:5173/#/home?sessionId=${seid.value}`
-      : `https://koa.quickegret.com/web/email/#/home?sessionId=${seid.value}`
+    return `https://oi.bwoil.com/web/email/#/home?sessionId=${seid.value}&devinfo=${new Date().getTime()}`
   })
   const back = () => {
     router.replace('/')
@@ -26,7 +24,8 @@
     }
     if (event?.data?.type === 'newMail') {
       console.log('new------email', event.data?.data)
-      window?.util?.startFlash('Welcome Electron')
+      // window?.util?.startFlash('Welcome Electron')
+      window?.util?.showNotification('一封新邮件')
     }
   })
 </script>
