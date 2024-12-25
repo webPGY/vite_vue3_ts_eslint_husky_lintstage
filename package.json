@@ -137,11 +137,17 @@
       "createStartMenuShortcut": true
     }
   },
-  "commitizen": {
-    "path": "./node_modules/cz-customizable"
-  },
-  "cz-customizable": {
-    "config": ".cz-config.cjs"
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": ".cz-config.cjs"
+    },
+    "conventional-changelog": {
+      "preset": "cz",
+      "lint": "conventional-changelog-lint-config-cz"
+    }
   },
   "husky": {
     "hooks": {
